@@ -5,6 +5,19 @@
     <link rel="icon" href="/static/favicon.png">
     <link href="static/styles.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
 </head>
 
 <body>
@@ -26,6 +39,9 @@
             <h1>Cotillon 2023.</h1>
             <p>Gran fiesta de cotillon para despedir 2023</p>
         </div>
+    </div>
+    <div id="registro-container">
+        <button id="register" type="submit" onclick="mostrar()">Registrarse</button>
     </div>
     <script type="text/javascript">
         document.addEventListener('click', function (event) {
