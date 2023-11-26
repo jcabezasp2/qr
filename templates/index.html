@@ -3,19 +3,157 @@
 <head>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="icon" href="/static/favicon.png">
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="./../static/reset.css">
     <link href="static/styles.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script type="module" src="js/main.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- <script type="module" src="./../static/js/main.js"></script> -->
 </head>
+
+<style>
+    body{
+    background-color: #111010;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    padding: 5% 10%;
+    color: #F8F8FF;
+}
+
+ #header-info{
+    display: flex;
+    gap: 5%;
+    align-items: flex-start;
+    width: 50%;
+    
+ }
+
+
+ section{
+    /* height: 100vh; */
+    padding: 5% 10%;
+ }
+
+ /* Artists */
+#artists{
+    background-color: #1f1e1e;
+    padding: 15%;
+}
+
+#artists-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+#artists h2{
+    color: #F8F8FF;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+#artists-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#artists-cards .card-body{
+    padding: 0;
+}
+
+#artists-cards button {
+    width: 100%;
+}
+
+/* Tickets */
+
+#tickets{
+    background-color: #F8F8FF;
+}
+
+#tickets-main{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#tickets-main > h2{
+    grid-column: span 4;
+    text-align: center;
+    color: #1f1e1e;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+#tickets .card{
+    width: 100%;
+    background-color: #1f1e1e;
+    color: #F8F8FF;
+}
+
+.artist{
+    color: #F8F8FF;
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr); 
+}
+
+.artist-image{
+    width: 100%;
+    object-fit: cover;
+}
+
+.artist-image > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artist-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+}
+
+#tickets .card-body{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card-body h2{
+    grid-column: span 2;
+}
+
+/* location */
+
+#location{
+    background-color: #1f1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #F8F8FF;
+}
+</style>
 
 <body>
     <div class="container">
         <header>
-            <img src="./images/Music-On-2023-12-31-PACHA-Tickets-poster.jpg" alt="">
+            <img src="./../static/images/Music-On-2023-12-31-PACHA-Tickets-poster.jpg" alt="">
             <div>
                 <h3>Dom 31 Dic 2023 | 23:59 - 06:00</h3>
                 <h1>Cotillon</h1>
@@ -143,5 +281,63 @@
 
 
     </div>
+
+    <script>
+        window.addEventListener('load', init);
+
+const createEvents = () => {
+    document.addEventListener('click', function (event) {
+        const x = event.clientX / window.innerWidth;
+        const y = event.clientY / window.innerHeight;
+        confetti({
+            origin: { x, y }
+        });
+    });
+
+    document.querySelector('#button-marco').addEventListener('click', function (event) {
+        document.querySelector('#artists-main').classList.add('d-none');
+        document.querySelector('#marco').classList.remove('d-none');
+    });
+
+    document.querySelector('#button-andrea').addEventListener('click', function (event) {
+        document.querySelector('#artists-main').classList.add('d-none');
+        document.querySelector('#andrea').classList.remove('d-none');
+    });
+
+    document.querySelector('#button-chelina').addEventListener('click', function (event) {
+        document.querySelector('#artists-main').classList.add('d-none');
+        document.querySelector('#chelina').classList.remove('d-none');
+    });
+
+    const buttons = document.querySelectorAll('.artists-return');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            try{
+                document.querySelector('#marco').classList.add('d-none');
+                document.querySelector('#andrea').classList.add('d-none');
+                document.querySelector('#chelina').classList.add('d-none');
+            }finally{
+                document.querySelector('#artists-main').classList.remove('d-none');
+            }
+        });
+    });
+    
+    document.querySelector('#button-buy').addEventListener('click', function (event) {
+        document.querySelector('#tickets-main').classList.add('d-none');
+        document.querySelector('#tickets-form').classList.remove('d-none');
+    });
+
+}
+
+
+
+function init() {
+
+    createEvents();
+    confetti();
+    
+};
+    </script>
     
 </body>
