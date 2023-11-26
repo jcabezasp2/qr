@@ -3,55 +3,145 @@
 <head>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="icon" href="/static/favicon.png">
+    <link rel="stylesheet" href="css/reset.css">
     <link href="static/styles.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <style>
-        button {
-                background-color: #4caf50;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            button:hover {
-                background-color: #45a049;
-            }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <div class="flares">
-        <img src="static/images/flare-top.png" loading="lazy" sizes="(max-width: 1920px) 100vw, 1920px"
-            srcset="flare-top-500.png 500w, static/images/flare-top-800.png 800w, static/images/flare-top-1080.png 1080w, static/images/flare-top.png 1920w"
-            alt="" class="flares-top">
-        <img src="static/images/flare-right.png" loading="lazy" sizes="(max-width: 1622px) 100vw, 1622px"
-            srcset="static/images/flare-right-500.png 500w, static/images/flare-right-800.png 800w, static/images/flare-right-1080.png 1080w, static/images/flare-right.png 1622w"
-            alt="" class="new-flare-nav top-right hide-mobile">
-        <img src="static/images/flare-left.png" loading="lazy" sizes="(max-width: 1518px) 100vw, 1518px"
-            srcset="static/images/flare-left-500.png 500w, static/images/flare-left-800.png 800w, static/images/flare-left.png 1518w"
-            alt="" class="new-flare-nav top-left hide-mobile">
-    </div>
-
     <div class="container">
-        <div class="hero">
+        <header>
+            <img src="./images/Music-On-2023-12-31-PACHA-Tickets-poster.jpg" alt="">
+            <div>
+                <h3>Dom 31 Dic 2023 | 23:59 - 06:00</h3>
+                <h1>Cotillon</h1>
+                <p>
+                    Cotillon nació en 2012 como una forma de que Marco compartiera su visión del techno entre amigos y devotos. En 2023, el legendario evento regresa, trayendo invitados internacionales de renombre a Aviles  No te pierdas una de las noches más populares y emocionantes.
+                </p>
+                <div id="header-info"><span>DRESS CODE:  Informal</span><span>AGE REQ:  18+</span></div>
+            </div>
+        </header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Cotillon</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="#artists">Artistas</a>
+                  <a class="nav-link" href="#tickets">Entradas</a>
+                  <a class="nav-link" href="#location">Localización</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <section id="artists">
+            <div id="artists-main" class="">
+                <h2>Artistas</h2>
+                <div id="artists-cards">
+                    <div class="card">
+                        <div class="card-body">
+                            <button type="button" id="button-marco" class="btn btn-primary">Marco Carola</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <button type="button" id="button-andrea" class="btn btn-primary">Andrea Oliva</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <button type="button" id="button-chelina" class="btn btn-primary">Chelina Manuhutu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="marco" class="artist d-none">
+                <div class="artist-image">
+                    <img src="./images/marco-carola-artist-xceed-cover-49c5.jpg" alt="">
+                </div>
+                <div class="artist-info">
+                    <h2>MARCO CAROLA</h2>
+                    <p>Sumérgete en la hipnótica experiencia musical de los viernes en la icónica Pacha, donde Marco Carola cautiva con sus ritmos tech-house y techno vanguardista.</p>
+                    <p>Carola, nacido en Nápoles, se ha convertido en embajador mundial del techno a lo largo de los años. De hecho, fue una de las claves en el desarrollo de la escena electrónica a principios de los 90, cuando llevó la floreciente escena techno napolitana al resto del mundo. </p>
+                    <p>Desde entonces, Marco se ha posicionado como uno de los artistas más respetados en Ibiza y dentro de la escena techno, ampliamente considerado como uno de los factores clave para impulsar el género hacia el reconocimiento mundial dentro de la música electrónica. </p>
+                    <button type="button" class="btn btn-light artists-return">Volver</button>
+                </div>
+            </div>
 
-            <h1>Cotillon 2023.</h1>
-            <p>Gran fiesta de cotillon para despedir 2023</p>
-        </div>
-    </div>
-    <div id="registro-container">
-        <button id="register" type="submit" onclick="mostrar()">Registrarse</button>
-    </div>
-    <script type="text/javascript">
-        document.addEventListener('click', function (event) {
-            const x = event.clientX / window.innerWidth;
-            const y = event.clientY / window.innerHeight;
-            confetti({
-                origin: { x, y }
-            });
-        });
-        confetti();
-    </script>
+            <div id="andrea" class="artist d-none">
+                <div class="artist-image">
+                    <img src="./images/andrea-oliva-artist-xceed-cover-470a.jpg" alt="">
+                </div>
+                <div class="artist-info">
+                    <h2>ANDREA OLIVA</h2>
+                    <p>El estatus actual de Andrea Oliva como cabeza de cartel internacional es el resultado de un viaje totalmente orgánico.</p>
+                    <p>Después de aprender a pinchar por su cuenta a los 16 años, Andrea empezó a trabajar en una tienda de discos, donde creó su extensa colección de promos y white labels de Europa y más allá, y pronto consiguió contratos en algunos de los mejores clubes de Suiza, lo que le llevó a residir en Terminus y Pravda. Con un estatus cada vez mayor en su país natal, Andrea se asoció con su amigo Agi Isaku, y el dúo no tardó en organizar fiestas "Banditz" por toda Suiza con entradas agotadas. Esta colaboración en casa continúa hasta el día de hoy, con Andrea pinchando regularmente en su querido Nordstern.</p>
+                    <p>A medida que su reputación crecía, también lo hacía su agenda, y fue invitado a Ibiza para pinchar en Space en el verano de 2004. Ibiza sigue siendo un lugar fundamental en la carrera actual de Andrea como DJ, donde actúa como cabeza de cartel la mayoría de las semanas en ANTS en Ushuaia. Sin embargo, su calendario de giras por todo el mundo es igual de extenso y cuenta con actuaciones en muchos de los festivales más importantes del mundo, como Coachella, Tomorrowland, BPM, DGTL, Creamfields y Electric Zoo.</p>
+                    <button type="button" class="btn btn-light artists-return">Volver</button>
+                </div>
+            </div>
 
+            <div id="chelina" class="artist d-none">
+                <div class="artist-image">
+                    <img src="./images/chelina-manuhutu-artist-xceed-cover-066e.jpg" alt="">
+                </div>
+                <div class="artist-info">
+                    <h2>CHELINA MANUHUTU</h2>
+                    <p>Bookings www.Magnumbookings.com</p>
+                    <p>am@alexmontoya.es</p>
+                    <button type="button" class="btn btn-light artists-return">Volver</button>
+                </div>
+            </div>
+
+
+          </section>
+          <section id="tickets">
+                <div id="tickets-main">
+                    <h2>Entradas</h2>
+                    <div class="card">
+                        <div class="card-body  card-sold">
+                        <h2>Early bird Ticket</h2>
+                        <h3>20€</h3>
+                        <button id="toBuy" type="button" class="btn btn-success disabled">Agotadas</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body card-sold">
+                        <h2>Preventa</h2>
+                        <h3>25€</h3>
+                        <button id="toBuy" type="button" class="btn btn-success disabled">Agotadas</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                        <h2>Entrada</h2>
+                        <h3>30€</h3>
+                        <button id="button-buy" type="button" class="btn btn-success">Comprar</button>
+                    </div>
+                    </div>
+
+                </div>
+                <div id="tickets-form" class="d-none">
+                    <h1>TODO</h1>
+                </div>
+
+          </section>
+            <section id="location">
+                <h2>Localización</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12054.241226351216!2d-5.922653325661108!3d43.5628225793685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1701030006790!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+        <main>
+
+        </main>
+
+
+    </div>
+    
 </body>
