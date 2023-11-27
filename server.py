@@ -1,4 +1,5 @@
 import os
+from urllib import request
 from flask import Flask, send_from_directory, render_template, redirect
 
 app = Flask(__name__)
@@ -11,7 +12,9 @@ def serve_static(path):
 
 @app.route('/')
 def home():
-   return render_template('index.html')
+    user_ip = request.remote_addr
+    print('Tu IP es: {}'.format(user_ip))
+    return render_template('index.html')
 
 @app.route('/<path:path>')
 def all_routes(path):
