@@ -1,5 +1,7 @@
 import os
 from flask import Flask, send_from_directory, render_template, redirect
+from flask import request
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -12,6 +14,10 @@ def serve_static(path):
 @app.route('/')
 def home():
    return render_template('index.html')
+
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    return jsonify({'ip': request.remote_addr}), 200
 
 @app.route('/<path:path>')
 def all_routes(path):
