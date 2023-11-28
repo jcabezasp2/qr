@@ -15,7 +15,7 @@ def serve_static(path):
 def home():
    return render_template('index.html')
 
-@app.route("/get_my_ip", methods=["GET"])
+@app.route("/prueba", methods=["GET"])
 def prueba():
     data = {
         "method": request.method,
@@ -23,7 +23,6 @@ def prueba():
         "form": request.form,
         "data": request.data,
         "cookies": request.cookies,
-        "headers": dict(request.headers),
         "path": request.path,
         "full_path": request.full_path,
         "script_root": request.script_root,
