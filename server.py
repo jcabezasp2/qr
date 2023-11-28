@@ -27,8 +27,8 @@ def prueba():
         # "path": request.path,
         # "full_path": request.full_path,
         # "script_root": request.script_root,
-        # "url": request.url,
-        # "base_url": request.base_url,
+        "url": request.url,
+        "base_url": request.base_url,
         "url_root": request.url_root,
         "host_url": request.host_url,
         "remote_addr": request.remote_addr
