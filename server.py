@@ -20,7 +20,6 @@ def prueba():
     data = {
         "method": request.method,
         "data": request.data,
-        "cookies": request.cookies,
         "path": request.path,
         "full_path": request.full_path,
         "script_root": request.script_root,
