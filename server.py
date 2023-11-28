@@ -29,7 +29,7 @@ def prueba():
         # "script_root": request.script_root,
         # "url": request.url,
         # "base_url": request.base_url,
-        # "url_root": request.url_root,
+        "url_root": request.url_root,
         "host_url": request.host_url,
         "remote_addr": request.remote_addr
     }
