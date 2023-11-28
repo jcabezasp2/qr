@@ -19,7 +19,6 @@ def home():
 def prueba():
     data = {
         "method": request.method,
-        "args": request.args,
         "data": request.data,
         "cookies": request.cookies,
         "path": request.path,
