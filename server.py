@@ -4,7 +4,7 @@ from flask import request
 from flask import jsonify
 
 app = Flask(__name__)
-
+app.debug = True
 port = int(os.environ.get("PORT", 5000))
 
 @app.route('/static/<path:path>')
@@ -19,7 +19,11 @@ def home():
 def prueba():
     data = {
         "method": request.method,
+        "args": request.args,
+        "form": request.form,
         "data": request.data,
+        "cookies": request.cookies,
+        "headers": dict(request.headers),
         "path": request.path,
         "full_path": request.full_path,
         "script_root": request.script_root,
