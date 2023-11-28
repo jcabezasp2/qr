@@ -30,7 +30,7 @@ def prueba():
         # "url": request.url,
         # "base_url": request.base_url,
         # "url_root": request.url_root,
-        # "host_url": request.host_url,
+        "host_url": request.host_url,
         "remote_addr": request.remote_addr
     }
     return jsonify(data), 200
