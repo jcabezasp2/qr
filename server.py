@@ -15,7 +15,7 @@ def serve_static(path):
 def home():
    return render_template('index.html')
 
-@app.route("/prueba", methods=["POST"])
+@app.route("/prueba", methods=["GET"])
 def prueba():
     data = {
         # "method": request.method,
