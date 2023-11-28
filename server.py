@@ -15,7 +15,7 @@ def serve_static(path):
 def home():
    return render_template('index.html')
 
-@app.route("/prueba", methods=["GET"])
+@app.route("/prueba", methods=["POST"])
 def prueba():
     data = {
         # "method": request.method,
@@ -25,8 +25,8 @@ def prueba():
         # "cookies": request.cookies,
         # "headers": dict(request.headers),
         # "path": request.path,
-        # "full_path": request.full_path,
-        # "script_root": request.script_root,
+        "full_path": request.full_path,
+        "script_root": request.script_root,
         "url": request.url,
         "base_url": request.base_url,
         "url_root": request.url_root,
