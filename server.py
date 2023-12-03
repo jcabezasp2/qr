@@ -1,5 +1,7 @@
 import os
 from flask import Flask, send_from_directory, render_template, redirect
+from flask import request
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -12,6 +14,26 @@ def serve_static(path):
 @app.route('/')
 def home():
    return render_template('index.html')
+
+@app.route("/prueba", methods=["GET"])
+def prueba():
+    data = {
+        # "method": request.method,
+        # "args": request.args,
+        # "form": request.form,
+        # "data": request.data,
+        "cookies": request.cookies,
+        "headers": dict(request.headers),
+        "path": request.path,
+        "full_path": request.full_path,
+        "script_root": request.script_root,
+        "url": request.url,
+        "base_url": request.base_url,
+        "url_root": request.url_root,
+        "host_url": request.host_url,
+        "remote_addr": request.remote_addr
+    }
+    return jsonify(data), 200
 
 @app.route('/<path:path>')
 def all_routes(path):
