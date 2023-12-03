@@ -2,10 +2,18 @@ import os
 from flask import Flask, send_from_directory, render_template, redirect
 from flask import request
 from flask import jsonify
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://fl0user:uT0ij6KYgIom@ep-young-bread-18088134.eu-central-1.aws.neon.fl0.io:5432/qr-project?sslmode=require'
+db = SQLAlchemy(app)
 port = int(os.environ.get("PORT", 5000))
+
+class Log(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    ip = db.Column(db.String(15), nullable=False)
+    agent = db.Column(db.Text, nullable=False)
+
 
 @app.route('/static/<path:path>')
 def serve_static(path):
@@ -33,6 +41,7 @@ def prueba():
         "host_url": request.host_url,
         "remote_addr": request.remote_addr
     }
+
     return jsonify(data), 200
 
 @app.route('/<path:path>')
