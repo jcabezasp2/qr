@@ -1,0 +1,5 @@
+CREATE TABLE logs (
+    id SERIAL PRIMARY KEY,
+    ip VARCHAR(15) NOT NULL,
+    agent TEXT NOT NULL
+);
