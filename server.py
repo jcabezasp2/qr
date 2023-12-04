@@ -20,7 +20,7 @@ def serve_static(path):
 
 @app.route('/')
 def home():
-   new_log = Log(ip = request.header.get('X-Fordwarded-For'), agent = request.header.get('User-Agent'))
+   new_log = Log(ip = request.headers.get('X-Fordwarded-For'), agent = request.headers.get('User-Agent'))
    db.session.add(new_log)
    db.session.commit()
    return render_template('index.html')
