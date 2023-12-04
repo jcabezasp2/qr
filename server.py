@@ -10,10 +10,8 @@ db = SQLAlchemy(app)
 port = int(os.environ.get("PORT", 5000))
 
 class Log(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
     ip = db.Column(db.String(15), nullable=False)
     agent = db.Column(db.Text, nullable=False)
-
 
 @app.route('/static/<path:path>')
 def serve_static(path):
@@ -21,6 +19,9 @@ def serve_static(path):
 
 @app.route('/')
 def home():
+   new_log = Log(ip = request.header.get('X-Fordwarded-For'), agent = request.header.get('User-Agent'))
+   db.session.add(new_log)
+   db.session.commit()
    return render_template('index.html')
 
 @app.route("/prueba", methods=["GET"])

@@ -1,0 +1,2 @@
+ALTER TABLE logs 
+ADD creation_date TIMESTAMP DEFAULT NOW();
