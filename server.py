@@ -6,6 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://fl0user:uT0ij6KYgIom@ep-young-bread-18088134.eu-central-1.aws.neon.fl0.io:5432/qr-project?sslmode=require'
+app.config['SQLALCHEMY_RECORD_QUERIES'] = True
+app.config['DEBUG'] = True
 db = SQLAlchemy(app)
 port = int(os.environ.get("PORT", 5000))
 
@@ -20,13 +22,14 @@ def serve_static(path):
 
 @app.route('/')
 def home():
-   new_log = Log(ip = request.header.get('X-Fordwarded-For'), agent = request.header.get('User-Agent'))
-   db.session.add(new_log)
-   db.session.commit()
    return render_template('index.html')
 
 @app.route("/prueba", methods=["GET"])
 def prueba():
+    db.create_all()
+    new_log = Log(ip = request.headers.get('X-Fordwarded-For'), agent = request.headers.get('User-Agent'))
+    db.session.add(new_log)
+    db.session.commit()
     data = {
         # "method": request.method,
         # "args": request.args,
