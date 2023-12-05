@@ -19,8 +19,7 @@ class Log(db.Model):
     ip = db.Column(db.String(15), nullable=False)
     agent = db.Column(db.Text, nullable=False)
 
-    def __init__(self, id, ip, agent):
-        self.id = id
+    def __init__(self, ip, agent):
         self.ip = ip
         self.agent = agent
 
@@ -34,10 +33,14 @@ def home():
 
 @app.route("/prueba", methods=["GET"])
 def prueba():
+    app.logger.debug("Entra bien")
     db.create_all()
     new_log = Log(ip = request.headers.get('X-Fordwarded-For'), agent = request.headers.get('User-Agent'))
+    app.logger.debug("Crea todo bien y el objeto Log")
     db.session.add(new_log)
+    app.logger.debug("Añadio el objeto a la base de datos")
     db.session.commit()
+    app.logger.debug("Hizo bien el commit")
     data = {
         # "method": request.method,
         # "args": request.args,
