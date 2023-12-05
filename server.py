@@ -24,7 +24,7 @@ def home():
 
 @app.route("/prueba", methods=["GET"])
 def prueba():
-        new_log = Log(ip = request.headers.get('X-Fordwarded-For'), agent = request.headers.get('User-Agent'))
+        new_log = Log(ip = '', agent = '')
         db.session.add(new_log)
         db.session.commit()
         data = {
