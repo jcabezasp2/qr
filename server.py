@@ -2,8 +2,8 @@ import os
 from flask import Flask, send_from_directory, render_template, redirect
 from flask import request
 from flask import jsonify
-from flask_sqlalchemy import SQLAlchemy
-from aplicacion.app import db
+from sqlalchemy import SQLAlchemy
+from utils.db import db
 import psycopg2
 
 app = Flask(__name__)
@@ -19,6 +19,11 @@ class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ip = db.Column(db.String(15), nullable=False)
     agent = db.Column(db.Text, nullable=False)
+
+    def __init__(self, id, ip, agent):
+        self.id = id
+        self.ip = ip
+        self.agent = agent
 
 @app.route('/static/<path:path>')
 def serve_static(path):
