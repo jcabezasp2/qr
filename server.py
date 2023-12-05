@@ -2,7 +2,7 @@ import os
 from flask import Flask, send_from_directory, render_template, redirect
 from flask import request
 from flask import jsonify
-from sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 
 app = Flask(__name__)
