@@ -3,17 +3,19 @@ from flask import Flask, send_from_directory, render_template, redirect
 from flask import request
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
+from aplication.app import db
 import psycopg2
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://fl0user:uT0ij6KYgIom@ep-young-bread-18088134.eu-central-1.aws.neon.fl0.io:5432/qr-project?sslmode=require'
-app.congig['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_RECORD_QUERIES'] = True
 app.config['DEBUG'] = True
 db = SQLAlchemy(app)
 port = int(os.environ.get("PORT", 5000))
 
 class Log(db.Model):
+    __tablename__ = 'logs'
     id = db.Column(db.Integer, primary_key=True)
     ip = db.Column(db.String(15), nullable=False)
     agent = db.Column(db.Text, nullable=False)
