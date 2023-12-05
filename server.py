@@ -3,6 +3,7 @@ from flask import Flask, send_from_directory, render_template, redirect
 from flask import request
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
+import psycopg2
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://fl0user:uT0ij6KYgIom@ep-young-bread-18088134.eu-central-1.aws.neon.fl0.io:5432/qr-project?sslmode=require'
@@ -24,7 +25,7 @@ def home():
 
 @app.route("/prueba", methods=["GET"])
 def prueba():
-        new_log = Log(ip = '', agent = '')
+        new_log = Log(ip = request.headers.get('X-Fordwarded-For'), agent = request.headers.get('User-Agent'))
         db.session.add(new_log)
         db.session.commit()
         data = {
@@ -46,9 +47,28 @@ def prueba():
 
         return jsonify(data), 200
 
+@app.route("/prueba2", methods=["GET"])
+def prueba2():
+    conn = psycopg2.connect(
+    dbname="qr-project",
+    user="fl0user",
+    password="uT0ij6KYgIom",
+    host="ep-young-bread-18088134.eu-central-1.aws.neon.fl0.io",
+    port="5432"
+    )
+    cur = conn.cursor()
+    cur.execute("""
+    INSERT INTO logs (ip, agent)
+    VALUES (%s, %s)
+    """, ('algo', 'algo2'))
+    conn.commit()
+    cur.close()
+    conn.close()
+     
+
 @app.route('/<path:path>')
 def all_routes(path):
     return redirect('/')
-
+        
 if __name__ == "__main__":
     app.run(port=port)
