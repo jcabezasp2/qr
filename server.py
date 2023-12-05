@@ -3,7 +3,6 @@ from flask import Flask, send_from_directory, render_template, redirect
 from flask import request
 from flask import jsonify
 from sqlalchemy import SQLAlchemy
-from utils.db import db
 import psycopg2
 
 app = Flask(__name__)
