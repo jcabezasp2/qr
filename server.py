@@ -35,7 +35,7 @@ def home():
 def prueba():
     app.logger.debug("Entra bien")
     db.create_all()
-    new_log = Log(ip = request.headers.get('X-Fordwarded-For'), agent = request.headers.get('User-Agent'))
+    new_log = Log(ip = request.headers.get('X-Forwarded-For'), agent = request.headers.get('User-Agent'))
     app.logger.debug("Crea todo bien y el objeto Log")
     db.session.add(new_log)
     app.logger.debug("Añadio el objeto a la base de datos")
