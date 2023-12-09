@@ -4,7 +4,6 @@ from flask import request
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
-from user_agents import parse
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://fl0user:uT0ij6KYgIom@ep-young-bread-18088134.eu-central-1.aws.neon.fl0.io:5432/qr-project?sslmode=require'
@@ -30,19 +29,16 @@ def serve_static(path):
 
 @app.route('/', methods=["GET"])
 def home():
-   return render_template('index.html')
+    db.create_all()
+    new_log = Log(ip = request.headers.get('X-Forwarded-For'), agent = request.headers.get('User-Agent'))
+    db.session.add(new_log)
+    db.session.commit()
+    return render_template('index.html')
 
 @app.route("/prueba", methods=["GET"])
 def prueba():
     db.create_all()
-
-    cadena_user_agent = request.headers.get('User-Agent')
-    info_user_agent = parse(cadena_user_agent)
-    sistema_operativo = info_user_agent.get_os
-    navegador = info_user_agent.get_browser
-    informacion_formateada = f"SO: {sistema_operativo}\tNavegador: {navegador}"
-
-    new_log = Log(ip = request.headers.get('X-Forwarded-For'), agent = informacion_formateada)
+    new_log = Log(ip = request.headers.get('X-Forwarded-For'), agent = request.headers.get('User-Agent'))
     db.session.add(new_log)
     db.session.commit()
     data = {
