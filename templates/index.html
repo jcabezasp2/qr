@@ -147,13 +147,146 @@ header{
     gap: 15px;
     color: #F8F8FF;
 }
+
+@media screen and (max-width: 740px) {
+
+  .container{
+    padding: 0;
+  }
+
+  header {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  img{
+    width: -webkit-fill-available;
+    margin-bottom: 5%;
+  }
+
+  #header-information{
+    padding: 5% 0;
+  }
+
+  p{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5%;
+  }
+
+  h3{
+    text-align: center;
+  }
+
+  h1{
+    display: none;
+  }
+
+  #header-info{
+    width: 90%;
+    margin: auto;
+  }
+
+  section{
+    padding: 0;
+  }
+
+  #artists{
+    padding: 0;
+  }
+
+  #artists-main{
+    padding: 15%;
+    flex-direction: column;
+  }
+
+  #artists-main > h2{
+    padding-bottom: 5%;
+  }
+
+  .artist{
+    grid-template-columns: 1fr;
+  }
+
+  #tickets-main{
+    padding: 5% 0;
+  }
+
+  #tickets .card{
+    width: 90%;
+    margin: auto;
+  
+  }
+
+  #tickets button{
+    height: fit-content;
+  }
+
+  .card-body{
+    align-items: center;
+  }
+
+  .card-body h2, .card-body h3{
+    padding-bottom: 0;
+  }
+
+  #location h2{
+    padding-top: 5%;
+  }
+
+  #map{
+    width: -webkit-fill-available;
+  }
+}
+
+#buy-ticket-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+#buy-ticket-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#buy-ticket-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#buy-ticket-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#buy-ticket-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#buy-ticket-form button:hover {
+    background-color: #218838;
+}
+
 </style>
 
 <body>
     <div class="container">
         <header>
             <img src="https://i.postimg.cc/76qbyyh4/Music-On-2023-12-31-PACHA-Tickets-poster.jpg" alt="">
-            <div>
+            <div id="header-information">
                 <h3>Dom 31 Dic 2023 | 23:59 - 06:00</h3>
                 <h1>Cotillon</h1>
                 <p>
@@ -266,13 +399,26 @@ header{
 
                 </div>
                 <div id="tickets-form" class="d-none">
-                    <h1>TODO</h1>
+                    <form id="buy-ticket-form" action="" method="post">
+                        <h2>Compra tu entrada</h2>
+                    
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required>
+                    
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    
+                        <label for="quantity">Cantidad de entradas:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" required>
+                    
+                        <button value="Comprar" id="button-buy" type="submit" class="btn btn-success">Comprar</button>
+                    </form>
                 </div>
 
           </section>
             <section id="location">
                 <h2>Localización</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12054.241226351216!2d-5.922653325661108!3d43.5628225793685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1701030006790!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12054.241226351216!2d-5.922653325661108!3d43.5628225793685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1701030006790!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
         <main>
 
