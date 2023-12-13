@@ -27,13 +27,15 @@ class Log(db.Model):
 def serve_static(path):
     return send_from_directory('static', path)
 
-@app.route('/', methods=["GET"])
+@app.route('/')
 def home():
-    db.create_all()
-    new_log = Log(ip = request.headers.get('X-Forwarded-For'), agent = request.headers.get('User-Agent'))
-    db.session.add(new_log)
-    db.session.commit()
-    return render_template('index.html')
+    try:
+        db.create_all()
+        new_log = Log(ip = request.headers.get('X-Forwarded-For'), agent = request.headers.get('User-Agent'))
+        db.session.add(new_log)
+        db.session.commit()
+    finally:
+        return render_template('index.html')
 
 @app.route("/prueba", methods=["GET"])
 def prueba():
